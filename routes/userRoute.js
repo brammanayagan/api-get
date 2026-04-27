@@ -1,9 +1,10 @@
 import express from "express";
 import { createUser, getUser } from "../controllers/userController.js";
+import { userValidation } from "../middlewares/userMiddleware.js";
 
 const route = express.Router();
 
-route.post("/create", createUser);
+route.post("/create", userValidation, createUser);
 route.get("/fetch", getUser);
 
 export default route;
